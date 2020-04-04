@@ -12,10 +12,10 @@ import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.insureapp.R;
 import pt.ulisboa.tecnico.sise.insureapp.app.GlobalState;
-import pt.ulisboa.tecnico.sise.insureapp.app.servercalls.WSLogin;
+import pt.ulisboa.tecnico.sise.insureapp.app.WSLogin;
 
 public class LoginActivity extends AppCompatActivity {
-    private final String TAG = "LginActivity:";
+    private final String TAG = "LoginLog:";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,26 +26,18 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GlobalState globalState = (GlobalState) getApplicationContext();
+
                 EditText editTextUserName = (EditText) findViewById(R.id.userNameInput);
                 EditText editTextPassword = (EditText) findViewById(R.id.passwordInput);
 
                 String username = editTextUserName.getText().toString();
                 String password = editTextPassword.getText().toString();
 
-                WSLogin login = new WSLogin();
-                int sessionID = -1;
 
                 try {
-                    sessionID = login.execute(username, password).get();
+                    (new WSLogin(globalState, LoginActivity.this)).execute(username, password).get();
 
-                    if (sessionID > 0){
-                        GlobalState.getInstance().setSessionID(sessionID);
-                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Log.d(TAG, "login successful with session id: " + sessionID);
-                        Toast.makeText(v.getContext(), "Wrong username or password", Toast.LENGTH_SHORT).show();
-                    }
                 } catch (Exception e) {
                     Log.d(TAG, e.getMessage());
                     Toast.makeText(v.getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -53,6 +45,12 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void nextActivity(){
+        Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+        startActivity(intent);
     }
 
 }
