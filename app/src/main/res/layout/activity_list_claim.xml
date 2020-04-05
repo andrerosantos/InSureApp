@@ -6,69 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".app.activities.ListClaimActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:text="@string/my_claims"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="22dp" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"> <!--IMPORTANT otherwise backgrnd img. will not fill the whole screen -->
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ListView
-                android:id="@+id/list_claims"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:dividerHeight="2px"
-                android:background="#70AFE3F3">
-
-            </ListView>
-        </LinearLayout>
-
-        <Space
-            android:layout_width="421dp"
-            android:layout_height="12dp" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <Space
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
 
-            <Button
-                android:id="@+id/backButtonListClaims"
-                android:layout_width="102dp"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:text="@string/my_claims"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="22dp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/back_button" />
+                android:orientation="horizontal">
+
+                <ListView
+                    android:id="@+id/list_claims"
+                    android:layout_width="match_parent"
+                    android:layout_height="572dp"
+                    android:background="#70AFE3F3"
+                    android:dividerHeight="2px">
+
+                </ListView>
+            </LinearLayout>
 
             <Space
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
+                android:layout_width="421dp"
+                android:layout_height="12dp" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/backButtonListClaims"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/back_button" />
+
+                <Space
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

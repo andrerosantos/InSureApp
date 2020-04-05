@@ -28,13 +28,12 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         _gs = (GlobalState) getApplicationContext();
-        _gs.checkSession(MenuActivity.this);
 
         informationButton = findViewById(R.id.informationButton);
         informationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, ClaimInformationActivity.class);
+                Intent intent = new Intent(MenuActivity.this, CustomerInformationActivity.class);
                 startActivity(intent);
             }
         });

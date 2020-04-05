@@ -10,11 +10,11 @@
     <string name="new_claim">New Claim </string>
     <string name="logout_button">Log out </string>
     <!--Activity Person -->
-    <string name="person_name">Name:</string>
-    <string name="fiscal_number">Fiscal Number:</string>
-    <string name="address">Address:</string>
-    <string name="date_of_birth">Date of birth:</string>
-    <string name="insurance_polic_number">Insurance policy number:</string>
+    <string name="person_name">Name:  </string>
+    <string name="fiscal_number">Fiscal Number:  </string>
+    <string name="address">Address:  </string>
+    <string name="date_of_birth">Date of birth:  </string>
+    <string name="insurance_polic_number">Policy number:  </string>
     <!--Activity List Claim -->
     <string name="back_button">BACK </string>
     <string name="my_claims">My claims</string>
@@ -28,7 +28,7 @@
     <!--Activity Claim Information -->
     <string name="customer_information">Customer Information </string>
     <!--Activity New Claim -->
-    <string name="new_insurance_claim">New Insurance Claim</string>
+    <string name="new_insurance_claim">New Claim</string>
     <string name="title"> Title:</string>
     <string name="number_of_plate">Number of plate:</string>
     <string name="occurrence_date">Occurrence Date:</string>
