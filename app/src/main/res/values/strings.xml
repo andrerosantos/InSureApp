@@ -1,9 +1,25 @@
 <resources>
     <string name="app_name">InSureApp</string>
+    <!--Activity Login -->
     <string name="username">Username: </string>
     <string name="password">Password: </string>
+    <string name="login_button">Login </string>
+    <!--Activity Menu -->
+    <string name="personal_information">Personal Information </string>
+    <string name="claims_history">Claims History </string>
+    <string name="new_claim">New Claim </string>
+    <string name="logout_button">Log out </string>
+    <!--Activity List Claim -->
+    <string name="back_button">BACK </string>
+    <!--Activity Claim Information -->
+    <string name="claim_information">Claim Information </string>
     <string name="claim_title">Claim title: </string>
     <string name="date">Date: </string>
     <string name="car_plate">Car plate: </string>
     <string name="description">Description: </string>
+    <string name="claim_status">Status: </string>
+    <!--Activity Claim Information -->
+    <string name="customer_information">Customer Information </string>
+
+
 </resources>
