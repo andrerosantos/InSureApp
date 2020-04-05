@@ -11,6 +11,7 @@
     <string name="logout_button">Log out </string>
     <!--Activity List Claim -->
     <string name="back_button">BACK </string>
+    <string name="my_claims">My claims</string>
     <!--Activity Claim Information -->
     <string name="claim_information">Claim Information </string>
     <string name="claim_title">Claim title: </string>

@@ -5,6 +5,8 @@ import android.app.Application;
 import android.content.Intent;
 import android.util.Log;
 
+import java.io.FileOutputStream;
+
 import pt.ulisboa.tecnico.sise.insureapp.app.activities.LoginActivity;
 
 public class GlobalState extends Application {
@@ -39,5 +41,6 @@ public class GlobalState extends Application {
         Intent intent = new Intent(null, LoginActivity.class);
         startActivity(intent);
     }
+
 
 }
