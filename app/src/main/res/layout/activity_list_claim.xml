@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/BackButtonListView"
+        android:id="@+id/backButtonListView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
@@ -30,13 +30,12 @@
         app:layout_constraintVertical_bias="0.934" />
 
     <ListView
-        android:id="@+id/ListView"
-        android:layout_width="363dp"
-        android:layout_height="509dp"
-        android:entries="10"
+        android:id="@+id/listClaims"
+        android:layout_width="377dp"
+        android:layout_height="524dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

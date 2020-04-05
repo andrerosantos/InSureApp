@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/BackButtonClaimInformation"
+        android:id="@+id/backButtonClaimInformation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
@@ -90,10 +90,9 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textViewClaimTitle"
         android:layout_width="205dp"
         android:layout_height="28dp"
-        android:text="TextView"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,10 +102,9 @@
         app:layout_constraintVertical_bias="0.17" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textViewDate"
         android:layout_width="205dp"
         android:layout_height="28dp"
-        android:text="TextView"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,19 +114,18 @@
         app:layout_constraintVertical_bias="0.244" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/textViewCarPlate"
         android:layout_width="205dp"
         android:layout_height="28dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
 
     <TextView
-        android:id="@+id/statusClaim"
+        android:id="@+id/textViewClaimStatus"
         android:layout_width="202dp"
         android:layout_height="29dp"
         android:layout_marginTop="24dp"
@@ -136,10 +133,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.717"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCarPlate" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/textViewDescription"
         android:layout_width="348dp"
         android:layout_height="189dp"
         android:layout_marginBottom="132dp"

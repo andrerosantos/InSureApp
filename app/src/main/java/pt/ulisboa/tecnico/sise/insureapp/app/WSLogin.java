@@ -38,6 +38,8 @@ public class WSLogin extends AsyncTask<String, Void, Integer> {
     protected void onPostExecute(Integer result){
         if (_gs.getSessionId() > 0 ) {
             _la.nextActivity();
+        } else {
+            Toast.makeText(_la, "Wrong username or password", Toast.LENGTH_SHORT).show();
         }
     }
 }

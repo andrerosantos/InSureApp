@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import pt.ulisboa.tecnico.sise.insureapp.R;
+
 public class CustomerInformationActivity extends AppCompatActivity {
 
     @Override
