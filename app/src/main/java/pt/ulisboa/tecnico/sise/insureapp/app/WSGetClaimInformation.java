@@ -1,13 +1,11 @@
 package pt.ulisboa.tecnico.sise.insureapp.app;
 
 import android.app.Activity;
-import android.app.Application;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
 import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
 
 public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord> {

@@ -3,6 +3,7 @@ package pt.ulisboa.tecnico.sise.insureapp.app.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,7 +42,7 @@ public class ClaimInformationActivity extends AppCompatActivity {
             return;
         }
 
-        int index = extras.getInt(InternalProtocol.KEY_READ_CLAIM);
+        final int index = extras.getInt(InternalProtocol.KEY_READ_CLAIM);
 
         this.textViewTitle = (TextView) findViewById(R.id.claimInfoTitle);
         this.textViewOccurrenceDate = (TextView) findViewById(R.id.claimInfoOccurrenceDate);
@@ -62,5 +63,6 @@ public class ClaimInformationActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 }

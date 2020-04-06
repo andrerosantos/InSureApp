@@ -2,77 +2,70 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_claims_constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".app.activities.ListClaimActivity">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:text="@string/my_claims"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="14dp" />
+
+        <ListView
+            android:id="@+id/list_claims"
+            android:layout_width="match_parent"
+            android:layout_height="581dp"
+            android:background="#70AFE3F3"
+            android:dividerHeight="2dp">
+
+        </ListView>
+
+        <Space
+            android:layout_width="421dp"
+            android:layout_height="12dp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/list_claims_constraint_layout"
+            app:layout_constraintEnd_toEndOf="@+id/list_claims_constraint_layout">
 
             <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="31dp"
-                android:text="@string/my_claims"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="14dp" />
-
-            <ScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="477dp"
-                android:fillViewport="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ListView
-                    android:id="@+id/list_claims"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#70AFE3F3"
-                    android:dividerHeight="2px">
-
-                </ListView>
-            </ScrollView>
-
-            <Space
-                android:layout_width="421dp"
-                android:layout_height="12dp" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_weight="1" />
 
-                <Space
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+            <Button
+                android:id="@+id/backButtonListClaims"
+                android:layout_width="102dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/back_button" />
 
-                <Button
-                    android:id="@+id/backButtonListClaims"
-                    android:layout_width="102dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/back_button" />
-
-                <Space
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
+            <Space
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
         </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

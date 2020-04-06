@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.activities.ListClaimActivity"></activity>
+        <activity android:name=".app.activities.MessagesActivity"></activity>
+        <activity android:name=".app.activities.ListClaimActivity" />
         <activity android:name=".app.activities.CustomerInformationActivity" />
         <activity android:name=".app.activities.NewInsuranceActivity" />
         <activity android:name=".app.activities.ClaimInformationActivity" />

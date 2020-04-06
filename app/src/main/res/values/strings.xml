@@ -34,4 +34,7 @@
     <string name="number_of_plate">Number of plate:</string>
     <string name="occurrence_date">Occurrence Date:</string>
     <string name="submit_claim_button">SUBMIT</string>
+    <!-- Messages -->
+    <string name="claim_id">Claim ID:</string>
+    <string name="button_send">SEND</string>
 </resources>
