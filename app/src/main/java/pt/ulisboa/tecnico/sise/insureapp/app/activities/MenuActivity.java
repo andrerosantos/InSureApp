@@ -63,8 +63,9 @@ public class MenuActivity extends AppCompatActivity {
                 (new WSLogout(_gs, MenuActivity.this)).execute();
 
                 Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-
+                finish();
             }
         });
 

@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".app.activities.ListClaimActivity">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"> <!--IMPORTANT otherwise backgrnd img. will not fill the whole screen -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -35,22 +26,26 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="22dp" />
+                android:layout_height="14dp" />
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="477dp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ListView
                     android:id="@+id/list_claims"
                     android:layout_width="match_parent"
-                    android:layout_height="572dp"
+                    android:layout_height="match_parent"
                     android:background="#70AFE3F3"
                     android:dividerHeight="2px">
 
                 </ListView>
-            </LinearLayout>
+            </ScrollView>
 
             <Space
                 android:layout_width="421dp"
@@ -80,5 +75,4 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
