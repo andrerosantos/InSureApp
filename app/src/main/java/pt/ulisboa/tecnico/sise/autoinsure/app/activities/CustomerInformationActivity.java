@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp.app.activities;
+package pt.ulisboa.tecnico.sise.autoinsure.app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import pt.ulisboa.tecnico.sise.insureapp.R;
-import pt.ulisboa.tecnico.sise.insureapp.app.GlobalState;
-import pt.ulisboa.tecnico.sise.insureapp.app.WSGetCustomerInformation;
+import pt.ulisboa.tecnico.sise.autoinsure.R;
+import pt.ulisboa.tecnico.sise.autoinsure.app.GlobalState;
+import pt.ulisboa.tecnico.sise.autoinsure.app.WSGetCustomerInformation;
 
 public class CustomerInformationActivity extends AppCompatActivity {
     private GlobalState _gs;

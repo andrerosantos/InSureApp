@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimRecord;
 
 public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord> {
     public final static String TAG = "WSGetClaimInfo";

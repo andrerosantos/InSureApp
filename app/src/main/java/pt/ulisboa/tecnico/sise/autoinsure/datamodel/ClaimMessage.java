@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp.datamodel;
+package pt.ulisboa.tecnico.sise.autoinsure.datamodel;
 
 import java.io.Serializable;
 

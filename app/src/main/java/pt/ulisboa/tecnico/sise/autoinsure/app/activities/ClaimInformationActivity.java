@@ -1,19 +1,18 @@
-package pt.ulisboa.tecnico.sise.insureapp.app.activities;
+package pt.ulisboa.tecnico.sise.autoinsure.app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Binder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import pt.ulisboa.tecnico.sise.insureapp.R;
-import pt.ulisboa.tecnico.sise.insureapp.app.GlobalState;
-import pt.ulisboa.tecnico.sise.insureapp.app.InternalProtocol;
-import pt.ulisboa.tecnico.sise.insureapp.app.WSGetClaimInformation;
+import pt.ulisboa.tecnico.sise.autoinsure.app.GlobalState;
+import pt.ulisboa.tecnico.sise.autoinsure.app.InternalProtocol;
+import pt.ulisboa.tecnico.sise.autoinsure.app.WSGetClaimInformation;
+import pt.ulisboa.tecnico.sise.autoinsure.R;
 
 public class ClaimInformationActivity extends AppCompatActivity {
     private static final String TAG = "ClaimInfoActivity";

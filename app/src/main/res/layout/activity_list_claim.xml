@@ -5,7 +5,7 @@
     android:id="@+id/list_claims_constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.activities.ListClaimActivity">
+    tools:context="pt.ulisboa.tecnico.sise.autoinsure.app.activities.ListClaimActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

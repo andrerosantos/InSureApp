@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import pt.ulisboa.tecnico.sise.insureapp.app.activities.ListClaimActivity;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.autoinsure.app.activities.ListClaimActivity;
 
 public class WSGetClaimList extends AsyncTask<Integer, Void, List<ClaimItem>> {
     public final static String TAG = "CallListClaims";

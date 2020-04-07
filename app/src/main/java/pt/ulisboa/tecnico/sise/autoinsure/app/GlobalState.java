@@ -1,13 +1,11 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 import android.util.Log;
 
-import java.io.FileOutputStream;
-
-import pt.ulisboa.tecnico.sise.insureapp.app.activities.LoginActivity;
+import pt.ulisboa.tecnico.sise.autoinsure.app.activities.LoginActivity;
 
 public class GlobalState extends Application {
     private final String TAG = "GlobalState";

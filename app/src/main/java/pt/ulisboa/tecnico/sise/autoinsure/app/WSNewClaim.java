@@ -1,13 +1,12 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import pt.ulisboa.tecnico.sise.insureapp.app.activities.MenuActivity;
+import pt.ulisboa.tecnico.sise.autoinsure.app.activities.MenuActivity;
 
 public class WSNewClaim extends AsyncTask<String, Void, Boolean> {
     public static final String TAG = "WSNewClaim";

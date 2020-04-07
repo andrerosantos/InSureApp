@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 public class InternalProtocol {
 

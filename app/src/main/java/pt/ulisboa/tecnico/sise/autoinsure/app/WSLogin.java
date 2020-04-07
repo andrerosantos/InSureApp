@@ -1,13 +1,11 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import pt.ulisboa.tecnico.sise.insureapp.app.activities.LoginActivity;
+import pt.ulisboa.tecnico.sise.autoinsure.app.activities.LoginActivity;
 
 public class WSLogin extends AsyncTask<String, Void, Integer> {
     private final static String TAG = "BackgroundLogin";
@@ -21,7 +19,7 @@ public class WSLogin extends AsyncTask<String, Void, Integer> {
 
     @Override
     protected Integer doInBackground(String... strings) {
-        int sessionID = 0;
+        int sessionID = -1;
         try {
             sessionID = WSHelper.login(strings[0], strings[1]);
             _gs.set_sessionID(sessionID);
@@ -39,7 +37,7 @@ public class WSLogin extends AsyncTask<String, Void, Integer> {
         if (_gs.getSessionId() > 0 ) {
             _la.nextActivity();
         } else {
-            Toast.makeText(_la, "Wrong username or password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(_la, "Oops, could not login!", Toast.LENGTH_SHORT).show();
         }
     }
 }

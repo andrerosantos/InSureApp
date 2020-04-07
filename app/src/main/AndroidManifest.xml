@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pt.ulisboa.tecnico.sise.insureapp">
+    package="pt.ulisboa.tecnico.sise.autoinsure">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".app.GlobalState"
+        android:name="pt.ulisboa.tecnico.sise.autoinsure.app.GlobalState"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,13 +14,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".app.activities.MessagesActivity"></activity>
-        <activity android:name=".app.activities.ListClaimActivity" />
-        <activity android:name=".app.activities.CustomerInformationActivity" />
+        <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.ListClaimActivity" />
+        <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.CustomerInformationActivity" />
         <activity android:name=".app.activities.NewInsuranceActivity" />
-        <activity android:name=".app.activities.ClaimInformationActivity" />
-        <activity android:name=".app.activities.NewClaimActivity" />
-        <activity android:name=".app.activities.MenuActivity" />
-        <activity android:name=".app.activities.LoginActivity">
+        <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.ClaimInformationActivity" />
+        <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.NewClaimActivity" />
+        <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.MenuActivity" />
+        <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

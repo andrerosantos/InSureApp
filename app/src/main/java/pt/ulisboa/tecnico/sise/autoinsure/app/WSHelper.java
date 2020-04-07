@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.util.Log;
 
@@ -14,11 +14,11 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.util.ArrayList;
 import java.util.List;
 
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimMessage;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimRecord;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.Person;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimMessage;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimRecord;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.Customer;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.Person;
 
 public class WSHelper {
     private static final String TAG = "WSHelper";

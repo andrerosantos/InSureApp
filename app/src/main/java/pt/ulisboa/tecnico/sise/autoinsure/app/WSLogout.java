@@ -1,14 +1,12 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.MenuInflater;
 import android.widget.Toast;
 
-import pt.ulisboa.tecnico.sise.insureapp.app.activities.LoginActivity;
-import pt.ulisboa.tecnico.sise.insureapp.app.activities.MenuActivity;
+import pt.ulisboa.tecnico.sise.autoinsure.app.activities.LoginActivity;
 
 public class WSLogout extends AsyncTask<Void, Void, Boolean> {
     public final static String TAG = "LogoutTask";

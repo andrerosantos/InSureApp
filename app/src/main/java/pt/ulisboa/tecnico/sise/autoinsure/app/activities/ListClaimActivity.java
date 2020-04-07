@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp.app.activities;
+package pt.ulisboa.tecnico.sise.autoinsure.app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,11 +12,11 @@ import android.widget.ListView;
 
 import java.util.List;
 
-import pt.ulisboa.tecnico.sise.insureapp.R;
-import pt.ulisboa.tecnico.sise.insureapp.app.GlobalState;
-import pt.ulisboa.tecnico.sise.insureapp.app.InternalProtocol;
-import pt.ulisboa.tecnico.sise.insureapp.app.WSGetClaimList;
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.autoinsure.app.GlobalState;
+import pt.ulisboa.tecnico.sise.autoinsure.app.InternalProtocol;
+import pt.ulisboa.tecnico.sise.autoinsure.app.WSGetClaimList;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.autoinsure.R;
 
 public class ListClaimActivity extends AppCompatActivity {
     private final String TAG = "ListClaimActivity";

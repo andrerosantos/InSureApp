@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.activities.ClaimInformationActivity">
+    tools:context="pt.ulisboa.tecnico.sise.autoinsure.app.activities.ClaimInformationActivity">
 
     <TextView
         android:id="@+id/textView4"

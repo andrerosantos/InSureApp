@@ -1,12 +1,10 @@
-package pt.ulisboa.tecnico.sise.insureapp.app;
+package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import pt.ulisboa.tecnico.sise.insureapp.datamodel.Customer;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.Customer;
 
 public class WSGetCustomerInformation extends AsyncTask<Integer, Void, Customer> {
     public final static String TAG = "GetCustomerInformation";

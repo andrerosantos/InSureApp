@@ -1,4 +1,4 @@
-package pt.ulisboa.tecnico.sise.insureapp.app.activities;
+package pt.ulisboa.tecnico.sise.autoinsure.app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import pt.ulisboa.tecnico.sise.insureapp.R;
-import pt.ulisboa.tecnico.sise.insureapp.app.GlobalState;
-import pt.ulisboa.tecnico.sise.insureapp.app.WSLogin;
+import pt.ulisboa.tecnico.sise.autoinsure.app.GlobalState;
+import pt.ulisboa.tecnico.sise.autoinsure.app.WSLogin;
+import pt.ulisboa.tecnico.sise.autoinsure.R;
 
 public class LoginActivity extends AppCompatActivity {
     private final String TAG = "LoginLog:";
