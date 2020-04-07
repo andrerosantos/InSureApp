@@ -27,7 +27,7 @@
     <string name="description">Description: </string>
     <string name="claim_status">Status: </string>
     <!--Activity Claim Information -->
-    <string name="customer_information">Customer Information: </string>
+    <string name="customer_information">Your profile</string>
     <string name="submission_date">Submission date: </string>
     <!--Activity New Claim -->
     <string name="new_insurance_claim">New Claim</string>
