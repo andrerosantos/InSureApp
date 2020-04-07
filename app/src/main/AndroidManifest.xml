@@ -7,16 +7,14 @@
     <application
         android:name="pt.ulisboa.tecnico.sise.autoinsure.app.GlobalState"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".app.activities.MessagesActivity"></activity>
         <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.ListClaimActivity" />
         <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.CustomerInformationActivity" />
-        <activity android:name=".app.activities.NewInsuranceActivity" />
         <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.ClaimInformationActivity" />
         <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.NewClaimActivity" />
         <activity android:name="pt.ulisboa.tecnico.sise.autoinsure.app.activities.MenuActivity" />

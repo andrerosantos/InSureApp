@@ -29,14 +29,13 @@ public class CustomerInformationActivity extends AppCompatActivity {
         TextView address = (TextView) findViewById(R.id.costumerViewAddress);
         TextView policyNumber = (TextView) findViewById(R.id.costumerViewPolicyNumber);
 
-        (new WSGetCustomerInformation(_gs, customerName, birthDate, fiscalNumber, address, policyNumber)).execute(_gs.getSessionId());
+        (new WSGetCustomerInformation(_gs, CustomerInformationActivity.this, customerName, birthDate, fiscalNumber, address, policyNumber)).execute(_gs.getSessionId());
 
         backButton = findViewById(R.id.backButtonCustomerInformation);
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(CustomerInformationActivity.this, MenuActivity.class);
-                startActivity(intent);
+                onBackPressed();
                 finish();
             }
         });

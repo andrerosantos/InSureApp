@@ -20,6 +20,8 @@ public class JsonFileManager {
         try {
             fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
             fos.write(input.getBytes());
+
+            Log.e(TAG, "File has been written");
         } catch (FileNotFoundException e) {
             Log.e(TAG, "File not found", e);
         } catch (IOException e) {

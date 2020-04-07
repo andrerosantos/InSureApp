@@ -28,9 +28,13 @@ public class WSGetClaimList extends AsyncTask<Integer, Void, List<ClaimItem>> {
     protected List<ClaimItem> doInBackground(Integer... sessionID) {
         try{
             List<ClaimItem> claims = WSHelper.listClaims(sessionID[0]);
+
+            // write claims locally to use in case of absent connection
+            String encodedClaims = JsonCodec.encodeClaimList(claims);
+            JsonFileManager.jsonWriteToFile(_gs, InternalProtocol.KEY_CLAIM_LIST_FILE + _gs.getSessionId(), encodedClaims);
+
             return claims;
         } catch (Exception e) {
-            Toast.makeText(_activity, "Oops, we could not get your claims.", Toast.LENGTH_SHORT).show();
             Log.d(TAG, e.getMessage());
         }
         return null;
@@ -38,10 +42,22 @@ public class WSGetClaimList extends AsyncTask<Integer, Void, List<ClaimItem>> {
 
     @Override
     protected void onPostExecute(List<ClaimItem> list){
-        if (list != null){
-            ArrayAdapter<ClaimItem> adapter = new ArrayAdapter<ClaimItem>(_gs, android.R.layout.simple_list_item_1, android.R.id.text1, list);
-            _listView.setAdapter(adapter);
+        if (list == null){
+            // try to get list of claims locally
+            String encodedClaims = JsonFileManager.jsonReadFromFile(_gs, InternalProtocol.KEY_CLAIM_LIST_FILE + _gs.getSessionId());
+
+            if (encodedClaims.equals("")){
+                Toast.makeText(_activity, "Oops, we could not get your claims.", Toast.LENGTH_SHORT).show();
+                return;
+
+            } else {
+                list = JsonCodec.decodeClaimList(encodedClaims);
+            }
         }
+
+        ArrayAdapter<ClaimItem> adapter = new ArrayAdapter<ClaimItem>(_gs, android.R.layout.simple_list_item_1, android.R.id.text1, list);
+        _listView.setAdapter(adapter);
+
     }
 
 

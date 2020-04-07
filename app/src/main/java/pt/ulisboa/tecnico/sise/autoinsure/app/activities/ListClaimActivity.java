@@ -53,8 +53,7 @@ public class ListClaimActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(ListClaimActivity.this, MenuActivity.class);
-                startActivity(intent);
+                onBackPressed();
                 finish();
             }
         });

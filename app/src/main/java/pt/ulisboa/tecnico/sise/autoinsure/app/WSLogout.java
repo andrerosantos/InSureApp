@@ -32,12 +32,11 @@ public class WSLogout extends AsyncTask<Void, Void, Boolean> {
         return result;
     }
 
-    public void onPostExecute(boolean result){
+    @Override
+    protected void onPostExecute(Boolean result){
         if (result) {
             Toast.makeText(_activity, "Logged out", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(_activity, LoginActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            _activity.startActivity(i);
+            _activity.onBackPressed();
             _activity.finish();
 
         } else {

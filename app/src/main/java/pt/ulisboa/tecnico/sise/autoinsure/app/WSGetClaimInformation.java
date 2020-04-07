@@ -36,24 +36,37 @@ public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord>
         try {
             ClaimRecord claim = WSHelper.getClaimInfo(integers[0], integers[1]);
             Log.d(TAG, "Got record of claim => " + integers[1]);
+
+            // write claims locally to use in case of absent connection
+            String encodedClaim = JsonCodec.encodeClaimRecord(claim);
+            JsonFileManager.jsonWriteToFile(this.globalState, InternalProtocol.KEY_CLAIM_RECORD_FILE + this.globalState.getSessionId(), encodedClaim);
+
             return claim;
         } catch (Exception e) {
             Log.d(TAG, "Could not get claim record. (session, claim) => " + integers[0] + ", " + integers[1]);
             Log.d(TAG, e.getMessage());
-            Toast.makeText(this.activity, "Could not get claim information", Toast.LENGTH_SHORT).show();
         }
         return null;
     }
 
     @Override
     protected void onPostExecute(ClaimRecord claim){
-        if (claim != null){
-            this.textViewTitle.setText(claim.getTitle());
-            this.textViewOccurrenceDate.setText(claim.getOccurrenceDate());
-            this.textViewSubmissionDate.setText(claim.getSubmissionDate());
-            this.textViewCarPlate.setText(claim.getPlate());
-            this.textViewStatus.setText(claim.getStatus());
-            this.textViewDescription.setText(claim.getDescription());
+        if (claim == null){
+            String encodedClaim = JsonFileManager.jsonReadFromFile(this.globalState, InternalProtocol.KEY_CLAIM_RECORD_FILE + this.globalState.getSessionId());
+
+            if (encodedClaim.equals("")){
+                Toast.makeText(this.activity, "Could not get claim information", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                claim = JsonCodec.decodeClaimRecord(encodedClaim);
+            }
         }
+
+        this.textViewTitle.setText(claim.getTitle());
+        this.textViewOccurrenceDate.setText(claim.getOccurrenceDate());
+        this.textViewSubmissionDate.setText(claim.getSubmissionDate());
+        this.textViewCarPlate.setText(claim.getPlate());
+        this.textViewStatus.setText(claim.getStatus());
+        this.textViewDescription.setText(claim.getDescription());
     }
 }

@@ -2,22 +2,62 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_new_claim"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10pt"
     tools:context="pt.ulisboa.tecnico.sise.autoinsure.app.activities.NewClaimActivity">
 
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/background_light"
+        android:contentDescription="@string/background"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/constraint_new_claim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/welcome1" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_new_claim"
+        app:layout_constraintEnd_toEndOf="@+id/layout_new_claim"
+        app:layout_constraintStart_toStartOf="@+id/layout_new_claim"
+        app:layout_constraintTop_toTopOf="@+id/layout_new_claim"
+        app:srcCompat="@android:color/white" />
+
     <LinearLayout
+        android:id="@+id/layout_new_claim"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="23dp" >
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/background_light"
             android:text="@string/new_insurance_claim"
             android:textAlignment="center"
             android:textSize="24sp" />
@@ -33,7 +73,7 @@
 
             <TextView
                 android:id="@+id/textView15"
-                android:layout_width="wrap_content"
+                android:layout_width="91dp"
                 android:layout_height="wrap_content"
                 android:text="@string/title"
                 android:textSize="18sp" />
@@ -59,15 +99,15 @@
 
             <TextView
                 android:id="@+id/textView18"
-                android:layout_width="7dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/car_plate"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/newClaimCarPlate"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinnerClaimCarPlate"
+                android:layout_width="257dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -91,11 +131,19 @@
 
             <EditText
                 android:id="@+id/newClaimDate"
-                android:layout_width="0dp"
+                android:layout_width="131dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="date" />
+
+            <Button
+                android:id="@+id/calendarButtonNewClaim"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#00FFFFFF"
+                android:drawableLeft="@android:drawable/ic_menu_my_calendar" />
 
         </LinearLayout>
 
@@ -126,7 +174,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="80dp" />
+            android:layout_height="40dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

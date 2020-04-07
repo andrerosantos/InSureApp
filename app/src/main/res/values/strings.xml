@@ -1,14 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">InSureApp</string>
+    <string name="background">Backgorund_image</string>
     <!--Activity Login -->
     <string name="username">Username: </string>
     <string name="password">Password: </string>
     <string name="login_button">Login </string>
     <!--Activity Menu -->
-    <string name="personal_information">Personal Information </string>
-    <string name="claims_history">Claims History </string>
-    <string name="new_claim">New Claim </string>
-    <string name="logout_button">Log out </string>
+    <string name="personal_information">Personal Info</string>
+    <string name="claims_history">See Claims</string>
+    <string name="new_claim">New Claim</string>
+    <string name="logout_button">Log out</string>
     <!--Activity Person -->
     <string name="person_name">Name:  </string>
     <string name="fiscal_number">Fiscal Number:  </string>
