@@ -150,6 +150,7 @@ public class JsonCodec {
                 String occurrenceDate = jsonObject.optString("occurrenceDate");
                 String description = jsonObject.optString("description");
                 String status = jsonObject.optString("status");
+                claimList.add(new ClaimRecord(claimIdResp, claimTitle, submissionDate, occurrenceDate, plate, description, status, null));
             }
         } catch (JSONException e) {
             Log.d(TAG, "decodeClaimRecordList:" + jsonResult);
@@ -184,6 +185,7 @@ public class JsonCodec {
             jsonClaim.put("occurrenceDate", claimRecord.getOccurrenceDate());
             jsonClaim.put("description", 	claimRecord.getDescription());
             jsonClaim.put("status", 		claimRecord.getStatus());
+            jsonClaimList.put(jsonClaim);
         }
         Log.i(TAG, "encodedClaimRecord: " + jsonClaimList.toString());
         return jsonClaimList.toString();
@@ -191,7 +193,6 @@ public class JsonCodec {
 
     public static String encodeClaimToSave(ClaimRecord newClaim, Context context, String filename) throws JSONException {
         List<ClaimRecord> decodedClaims = null;
-
 
         try {
             String previousEncodedClaims = JsonFileManager.jsonReadFromFile(context, filename);
@@ -209,7 +210,7 @@ public class JsonCodec {
         decodedClaims.add(newClaim);
         Log.d(TAG, "try_1");
         String encodedClaims = encodeClaimRecordList(decodedClaims);
-        Log.i(TAG, "Claim saved offline for later submission.");
+        Log.i(TAG, "Claim saved offline for later submission => " + encodedClaims);
 
         return encodedClaims;
     }

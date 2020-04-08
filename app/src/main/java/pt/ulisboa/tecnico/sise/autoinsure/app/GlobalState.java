@@ -48,7 +48,7 @@ public class GlobalState extends Application {
     }
 
     public void checkFilesToSubmit(Activity activity, Context context){
-        (new WSSubmitOfflineClaims(GlobalState.this, activity)).execute();
+        (new WSSubmitOfflineClaims(GlobalState.this, activity, activity.getApplicationContext())).execute();
     }
 
 }

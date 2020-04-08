@@ -55,7 +55,8 @@ public class WSNewClaim extends AsyncTask<String, Void, Boolean> {
             ClaimRecord claimToSave = new ClaimRecord(-1, strings[0], df.format(new Date()), strings[1], strings[2], strings[3], "", (new ArrayList<ClaimMessage>()));
             try {
                 String encodedClaim = JsonCodec.encodeClaimToSave(claimToSave, this.context, InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + this.globalState.getUsername());
-                JsonFileManager.jsonWriteToFile(this.globalState, encodedClaim, InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + this.globalState.getUsername());
+                Log.d(TAG, "EncodedClaim => " + encodedClaim);
+                JsonFileManager.jsonWriteToFile(this.globalState, InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + this.globalState.getUsername(), encodedClaim);
                 this.globalState.thereAreFilesToSubmit();
                 this.futureSubmission = true;
 

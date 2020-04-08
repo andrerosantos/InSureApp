@@ -18,20 +18,22 @@ public class WSSubmitOfflineClaims extends AsyncTask<Void, Void, Void> {
 
     private GlobalState _gs;
     private Activity _activity;
+    private Context _context;
     private boolean error = false;
     private boolean nothingToSubmit = false;
 
-    public WSSubmitOfflineClaims(GlobalState gs, Activity activity){
+    public WSSubmitOfflineClaims(GlobalState gs, Activity activity, Context context){
         this._gs = gs;
         this._activity = activity;
+        this._context = context;
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
         List<ClaimRecord> claimList = new ArrayList<>();
+        String filename = InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + _gs.getUsername();
         try {
-            String encodedClaimRecordList = JsonFileManager.jsonReadFromFile(_gs, InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + _gs.getUsername());
-            Log.d(TAG, "No exception?");
+            String encodedClaimRecordList = JsonFileManager.jsonReadFromFile(_gs, filename);
             claimList = JsonCodec.decodeClaimRecordList(encodedClaimRecordList);
         } catch (Exception e) {
             Log.d(TAG, e.getMessage());
@@ -41,14 +43,17 @@ public class WSSubmitOfflineClaims extends AsyncTask<Void, Void, Void> {
 
         for (int i = 0; i < claimList.size(); i++){
             ClaimRecord newClaim = claimList.get(i);
+            Log.d(TAG, "claim found. title => " + newClaim.getTitle());
             try {
-                WSHelper.submitNewClaim(_gs.getSessionId(), newClaim.getTitle(), newClaim.getOccurrenceDate(), newClaim.getPlate(), newClaim.getDescription());
+                boolean success = WSHelper.submitNewClaim(_gs.getSessionId(), newClaim.getTitle(), newClaim.getOccurrenceDate(), newClaim.getPlate(), newClaim.getDescription());
+                Log.d(TAG, "Trying to submit claim. Success? => " + success);
             } catch (Exception e) {
                 Log.d(TAG, e.getMessage());
             }
         }
 
-        File fileToDelete = new File(InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + _gs.getUsername() + ".json");
+        File dir = _context.getFilesDir();
+        File fileToDelete = new File(dir, filename);
         fileToDelete.delete();
 
         return null;
