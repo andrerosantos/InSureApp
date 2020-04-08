@@ -10,6 +10,7 @@ import pt.ulisboa.tecnico.sise.autoinsure.app.activities.LoginActivity;
 public class GlobalState extends Application {
     private final String TAG = "GlobalState";
     private int _sessionID;
+    private String _userName;
 
     public GlobalState() { }
 
@@ -19,6 +20,14 @@ public class GlobalState extends Application {
 
     public void set_sessionID(int _sessionID){
         this._sessionID = _sessionID;
+    }
+
+    public String getUsername(){
+        return _userName;
+    }
+
+    public void setUsername(String userName){
+        this._userName = userName;
     }
 
     public boolean isLoggedIn(){

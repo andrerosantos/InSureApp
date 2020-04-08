@@ -23,6 +23,7 @@ public class WSLogin extends AsyncTask<String, Void, Integer> {
         try {
             sessionID = WSHelper.login(strings[0], strings[1]);
             _gs.set_sessionID(sessionID);
+            _gs.setUsername(strings[0]);
 
             Log.d(TAG, "sessionID: " + sessionID);
 

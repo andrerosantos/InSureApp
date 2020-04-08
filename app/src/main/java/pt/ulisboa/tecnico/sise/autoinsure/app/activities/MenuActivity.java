@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -31,6 +32,7 @@ public class MenuActivity extends AppCompatActivity {
         informationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Requested Customer Information Activity");
                 Intent intent = new Intent(MenuActivity.this, CustomerInformationActivity.class);
                 startActivity(intent);
             }
@@ -40,6 +42,7 @@ public class MenuActivity extends AppCompatActivity {
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Requested List Claim Activity");
                 Intent intent = new Intent(MenuActivity.this, ListClaimActivity.class);
                 startActivity(intent);
             }
@@ -49,6 +52,7 @@ public class MenuActivity extends AppCompatActivity {
         newClaimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Requested New Claim Activity");
                 Intent intent = new Intent(MenuActivity.this, NewClaimActivity.class);
                 startActivity(intent);
             }
@@ -58,6 +62,7 @@ public class MenuActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                Log.d(TAG, "Requested Logout");
                 (new WSLogout(_gs, MenuActivity.this)).execute();
             }
         });

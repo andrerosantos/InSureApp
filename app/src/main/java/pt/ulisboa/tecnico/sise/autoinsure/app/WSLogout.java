@@ -16,6 +16,7 @@ public class WSLogout extends AsyncTask<Void, Void, Boolean> {
 
     public WSLogout(GlobalState globalState, Activity activity){
         _gs = globalState;
+        _activity = activity;
     }
 
     @Override
