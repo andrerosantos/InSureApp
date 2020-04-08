@@ -27,20 +27,22 @@ public class WSLogin extends AsyncTask<String, Void, Integer> {
             _gs.set_sessionID(sessionID);
             _gs.setUsername(strings[0]);
 
-            Log.d(TAG, "sessionID: " + sessionID);
-
             _gs.checkFilesToSubmit(_la, _context);
 
         } catch (Exception e){
             Log.d(TAG, e.toString());
         }
+
+        Log.d(TAG, "Session id => " + sessionID);
         return sessionID;
     }
 
     @Override
     protected void onPostExecute(Integer result){
-        if (_gs.getSessionId() > 0 ) {
+        if (result > 0 ) {
             _la.nextActivity();
+        } else if (result == 0){
+            Toast.makeText(_la, "Wrong username or password!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(_la, "Oops, could not login!", Toast.LENGTH_SHORT).show();
         }
