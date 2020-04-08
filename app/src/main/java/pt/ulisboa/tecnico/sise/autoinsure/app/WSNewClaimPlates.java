@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -18,14 +19,16 @@ public class WSNewClaimPlates extends AsyncTask<Integer, Void, List<String>> {
 
     private GlobalState _globalState;
     private Activity _activity;
+    private Context _context;
     private Spinner _spinner;
     private boolean wrongSessionId = false;
 
 
-    public WSNewClaimPlates(GlobalState globalState, Activity activity, Spinner spinner){
+    public WSNewClaimPlates(GlobalState globalState, Activity activity, Spinner spinner, Context context){
         this._globalState = globalState;
         this._activity = activity;
         this._spinner = spinner;
+        this._context = context;
     }
 
     @Override
@@ -55,6 +58,9 @@ public class WSNewClaimPlates extends AsyncTask<Integer, Void, List<String>> {
                 // save plates
                 String encodedPlates = JsonCodec.encodePlateList(plates);
                 JsonFileManager.jsonWriteToFile(_globalState, InternalProtocol.KEY_USER_PLATES_FILE + _globalState.getUsername(), encodedPlates);
+
+                Log.d(TAG, "Got vehicle plates of user => " + _globalState.getSessionId());
+                _globalState.checkFilesToSubmit(_activity, _context);
 
                 return plates;
             } catch (Exception e) {

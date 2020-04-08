@@ -2,9 +2,12 @@ package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,7 @@ public class GlobalState extends Application {
     private int _sessionID;
     private String _userName;
     private ArrayList<ClaimRecord> claimsToSubmit = new ArrayList<>();
+    private boolean filesToSubmit = false;
 
     public GlobalState() { }
 
@@ -39,22 +43,12 @@ public class GlobalState extends Application {
         return (this._sessionID > 0);
     }
 
-    public void checkSession(Activity activity){
-        if (!isLoggedIn()){
-            Log.d(TAG, "Not logged in");
-            logout(activity);
-        } else {
-            Log.d(TAG, "Client in session with id " + this._sessionID);
-        }
+    public void thereAreFilesToSubmit(){
+        this.filesToSubmit = true;
     }
 
-    public void logout(Activity activity){
-        this._sessionID = -1;
-        Intent intent = new Intent(null, LoginActivity.class);
-        startActivity(intent);
+    public void checkFilesToSubmit(Activity activity, Context context){
+        (new WSSubmitOfflineClaims(GlobalState.this, activity)).execute();
     }
 
-    public void addClaimToSubmit(ClaimRecord claim){
-        this.claimsToSubmit.add(claim);
-    }
 }

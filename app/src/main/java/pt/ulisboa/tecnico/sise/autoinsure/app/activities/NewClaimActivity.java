@@ -48,7 +48,7 @@ public class NewClaimActivity extends AppCompatActivity {
         this.occDate = (TextView) findViewById(R.id.newClaimDate);
         this.description = (TextView) findViewById(R.id.newClaimDescription);
 
-        (new WSNewClaimPlates(this._gs, NewClaimActivity.this, this.carPlate)).execute(_gs.getSessionId());
+        (new WSNewClaimPlates(this._gs, NewClaimActivity.this, this.carPlate, getApplicationContext())).execute(_gs.getSessionId());
 
         this.calendarButton = (Button) findViewById(R.id.calendarButtonNewClaim);
         this.backButton = (Button) findViewById(R.id.backButtonNewClaim);
@@ -98,7 +98,7 @@ public class NewClaimActivity extends AppCompatActivity {
                         dateFormat.parse(occDate.getText().toString().trim());
 
                         //if no exception is thrown so far, the date is valid and sent to submission
-                        (new WSNewClaim(_gs, NewClaimActivity.this)).execute(claimTitle.getText().toString(), occDate.getText().toString(), carPlate.getSelectedItem().toString(), description.getText().toString());
+                        (new WSNewClaim(_gs, NewClaimActivity.this, getApplicationContext())).execute(claimTitle.getText().toString(), occDate.getText().toString(), carPlate.getSelectedItem().toString(), description.getText().toString());
 
                     } catch (ParseException e) {
                         Toast.makeText(NewClaimActivity.this, "The provided date is no valid", Toast.LENGTH_SHORT).show();

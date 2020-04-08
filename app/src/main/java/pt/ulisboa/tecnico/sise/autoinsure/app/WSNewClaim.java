@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -8,10 +9,13 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import pt.ulisboa.tecnico.sise.autoinsure.app.activities.LoginActivity;
 import pt.ulisboa.tecnico.sise.autoinsure.app.activities.MenuActivity;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimMessage;
 import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.autoinsure.datamodel.Customer;
 
@@ -20,12 +24,14 @@ public class WSNewClaim extends AsyncTask<String, Void, Boolean> {
 
     private GlobalState globalState;
     private Activity activity;
+    private Context context;
     private boolean wrongSessionId = false;
     private boolean futureSubmission= false;
 
-    public WSNewClaim(GlobalState globalState, Activity activity) {
+    public WSNewClaim(GlobalState globalState, Activity activity, Context context) {
         this.globalState = globalState;
         this.activity = activity;
+        this.context = context;
     }
 
     @Override
@@ -38,20 +44,23 @@ public class WSNewClaim extends AsyncTask<String, Void, Boolean> {
                 this.wrongSessionId = true;
                 return false;
             }
+
         } catch (Exception e){
             //Not connected
             Log.d(TAG, e.getMessage());
 
             // save claim to submit later
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            ClaimRecord claimToSave = new ClaimRecord(-1, strings[0], df.format(new Date()), strings[1], strings[2], strings[3], "", null );
+
+            ClaimRecord claimToSave = new ClaimRecord(-1, strings[0], df.format(new Date()), strings[1], strings[2], strings[3], "", (new ArrayList<ClaimMessage>()));
             try {
-                String encodedClaim = JsonCodec.encodeClaimToSave(claimToSave, this.globalState, InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + this.globalState.getUsername());
+                String encodedClaim = JsonCodec.encodeClaimToSave(claimToSave, this.context, InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + this.globalState.getUsername());
                 JsonFileManager.jsonWriteToFile(this.globalState, encodedClaim, InternalProtocol.KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE + this.globalState.getUsername());
+                this.globalState.thereAreFilesToSubmit();
                 this.futureSubmission = true;
 
             } catch (Exception ex) {
-                Log.d(TAG, e.getMessage());
+                Log.d(TAG, ex.getMessage());
             }
 
             return false;
@@ -86,8 +95,9 @@ public class WSNewClaim extends AsyncTask<String, Void, Boolean> {
             } else{
                 if (this.futureSubmission){
                     Toast.makeText(this.activity, "Your claim will be submitted when you have a connection.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this.activity, "No connection to server. Please try again later.", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(this.activity, "No connection to server. Please try again later.", Toast.LENGTH_SHORT).show();
             }
         }
     }

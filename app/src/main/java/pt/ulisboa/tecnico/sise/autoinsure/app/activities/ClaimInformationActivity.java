@@ -51,7 +51,7 @@ public class ClaimInformationActivity extends AppCompatActivity {
         this.textViewDescription = (TextView) findViewById(R.id.claimInfoDescription);
 
         (new WSGetClaimInformation(this._gs, ClaimInformationActivity.this,
-                this.textViewTitle, this.textViewOccurrenceDate, this.textViewSubmissionDate, this.textViewCarPlate, this.textViewStatus, this.textViewDescription)).execute(_gs.getSessionId(), index);
+                this.textViewTitle, this.textViewOccurrenceDate, this.textViewSubmissionDate, this.textViewCarPlate, this.textViewStatus, this.textViewDescription, getApplicationContext())).execute(_gs.getSessionId(), index);
 
         this.backButton = (Button) findViewById(R.id.backButtonClaimInformation);
         backButton.setOnClickListener(new View.OnClickListener() {

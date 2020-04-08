@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -190,14 +191,26 @@ public class JsonCodec {
 
     public static String encodeClaimToSave(ClaimRecord newClaim, Context context, String filename) throws JSONException {
         List<ClaimRecord> decodedClaims = null;
+
+
         try {
             String previousEncodedClaims = JsonFileManager.jsonReadFromFile(context, filename);
             decodedClaims = decodeClaimRecordList(previousEncodedClaims);
+            Log.i(TAG, "There are previous claims to submit");
         } catch (Exception e){
             Log.i(TAG, "No previous claims to submit");
         }
+
+        if(decodedClaims == null){
+            decodedClaims = new ArrayList<>();
+        }
+
+        Log.d(TAG, "try_0");
         decodedClaims.add(newClaim);
+        Log.d(TAG, "try_1");
         String encodedClaims = encodeClaimRecordList(decodedClaims);
+        Log.i(TAG, "Claim saved offline for later submission.");
+
         return encodedClaims;
     }
 }

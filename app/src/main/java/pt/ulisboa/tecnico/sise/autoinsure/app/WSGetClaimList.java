@@ -1,5 +1,6 @@
 package pt.ulisboa.tecnico.sise.autoinsure.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -19,13 +20,15 @@ public class WSGetClaimList extends AsyncTask<Integer, Void, List<ClaimItem>> {
 
     private GlobalState _gs;
     private ListClaimActivity _activity;
+    private Context _context;
     private ListView _listView;
     private boolean wrongSessionId = false;
 
-    public WSGetClaimList(GlobalState globalState, ListClaimActivity activity, ListView listView) {
+    public WSGetClaimList(GlobalState globalState, ListClaimActivity activity, ListView listView, Context context) {
         this._gs = globalState;
         this._activity = activity;
         this._listView = listView;
+        this._context = context;
     }
 
     @Override
@@ -55,6 +58,9 @@ public class WSGetClaimList extends AsyncTask<Integer, Void, List<ClaimItem>> {
                 // write claims locally to use in case of absent connection
                 String encodedClaims = JsonCodec.encodeClaimList(claims);
                 JsonFileManager.jsonWriteToFile(_gs, InternalProtocol.KEY_CLAIM_LIST_FILE + _gs.getUsername(), encodedClaims);
+
+                Log.d(TAG, "Got claim list of user => " + _gs.getUsername());
+                _gs.checkFilesToSubmit(_activity, _context);
 
                 return claims;
             } catch (Exception e) {

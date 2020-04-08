@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -17,6 +18,7 @@ public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord>
     public final static String TAG = "WSGetClaimInfo";
     private GlobalState globalState;
     private Activity activity;
+    private Context context;
 
     private TextView textViewTitle;
     private TextView textViewOccurrenceDate;
@@ -26,7 +28,7 @@ public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord>
     private TextView textViewDescription;
     private boolean wrongSessionId = false;
 
-    public WSGetClaimInformation(GlobalState globalState, Activity activity, TextView title, TextView occurrenceDate, TextView submissionDate, TextView carPlate, TextView status, TextView description){
+    public WSGetClaimInformation(GlobalState globalState, Activity activity, TextView title, TextView occurrenceDate, TextView submissionDate, TextView carPlate, TextView status, TextView description, Context context){
         this.globalState = globalState;
         this.activity = activity;
         this.textViewTitle = title;
@@ -35,6 +37,7 @@ public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord>
         this.textViewCarPlate = carPlate;
         this.textViewStatus = status;
         this.textViewDescription = description;
+        this.context = context;
     }
 
     @Override
@@ -85,6 +88,8 @@ public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord>
                 ClaimRecord claim = JsonCodec.decodeClaimRecord(encodedClaim);
 
                 Log.d(TAG, "Showing customer information saved locally.");
+                this.globalState.checkFilesToSubmit(activity, context);
+
                 return claim;
 
             } catch (Exception ex){

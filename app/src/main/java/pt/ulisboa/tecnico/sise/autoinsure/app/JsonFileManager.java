@@ -20,8 +20,7 @@ public class JsonFileManager {
         try {
             fos = context.openFileOutput(filename, Context.MODE_PRIVATE);
             fos.write(input.getBytes());
-
-            Log.e(TAG, "File has been written");
+            Log.e(TAG, "File has been written => " + filename);
         } catch (FileNotFoundException e) {
             Log.e(TAG, "File not found", e);
         } catch (IOException e) {
@@ -35,7 +34,7 @@ public class JsonFileManager {
         }
     }
 
-    public static String jsonReadFromFile(Context context, String filename) {
+    public static String jsonReadFromFile(Context context, String filename) throws FileNotFoundException {
         FileInputStream fis = null;
         Scanner scanner = null;
         StringBuilder sb = new StringBuilder();
@@ -45,8 +44,6 @@ public class JsonFileManager {
             while (scanner.hasNextLine()) {
                 sb.append(scanner.nextLine() + LINE_SEP);
             }
-        } catch (FileNotFoundException e) {
-            Log.e(TAG, "File not found", e);
         } finally {
             if (fis != null) {
                 try {

@@ -32,7 +32,7 @@ public class ListClaimActivity extends AppCompatActivity {
         GlobalState globalState = (GlobalState) getApplicationContext();
 
         this._listView = (ListView) findViewById(R.id.list_claims);
-        (new WSGetClaimList(globalState, ListClaimActivity.this, this._listView)).execute(globalState.getSessionId());
+        (new WSGetClaimList(globalState, ListClaimActivity.this, this._listView, getApplicationContext())).execute(globalState.getSessionId());
 
         _listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override

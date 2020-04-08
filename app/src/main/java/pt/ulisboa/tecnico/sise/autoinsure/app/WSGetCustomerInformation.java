@@ -1,8 +1,10 @@
 package pt.ulisboa.tecnico.sise.autoinsure.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ public class WSGetCustomerInformation extends AsyncTask<Integer, Void, Customer>
 
     private GlobalState _gs;
     private Activity _activity;
+    private Context _context;
     private TextView name;
     private TextView birthDate;
     private TextView fiscalNumber;
@@ -22,7 +25,7 @@ public class WSGetCustomerInformation extends AsyncTask<Integer, Void, Customer>
     private TextView policyNumber;
     private boolean wrongSessionId = false;
 
-    public WSGetCustomerInformation(GlobalState globalState, Activity activity, TextView name, TextView birthDate, TextView fiscalNumber, TextView address, TextView policyNumber){
+    public WSGetCustomerInformation(GlobalState globalState, Activity activity, TextView name, TextView birthDate, TextView fiscalNumber, TextView address, TextView policyNumber, Context context){
         this._gs = globalState;
         this._activity = activity;
         this.name = name;
@@ -30,6 +33,7 @@ public class WSGetCustomerInformation extends AsyncTask<Integer, Void, Customer>
         this.fiscalNumber = fiscalNumber;
         this.address = address;
         this.policyNumber = policyNumber;
+        this._context = context;
     }
 
     @Override
@@ -49,6 +53,9 @@ public class WSGetCustomerInformation extends AsyncTask<Integer, Void, Customer>
             // write claims locally to use in case of absent connection
             String encodedCustomer = JsonCodec.encodeCustomerInfo(customer);
             JsonFileManager.jsonWriteToFile(_gs, InternalProtocol.KEY_CUSTOMER_INFORMATION_FILE + _gs.getUsername(), encodedCustomer);
+
+            Log.d(TAG, "Got customer information of customer => " + _gs.getUsername());
+            _gs.checkFilesToSubmit(_activity, _context);
 
             return customer;
         } catch (Exception e) {

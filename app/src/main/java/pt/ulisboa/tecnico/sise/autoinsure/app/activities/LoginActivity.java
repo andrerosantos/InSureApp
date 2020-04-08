@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 try {
-                    (new WSLogin(globalState, LoginActivity.this)).execute(username, password).get();
+                    (new WSLogin(globalState, LoginActivity.this, getApplicationContext())).execute(username, password).get();
 
                 } catch (Exception e) {
                     Log.d(TAG, e.getMessage());

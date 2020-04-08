@@ -11,10 +11,12 @@ public class WSLogin extends AsyncTask<String, Void, Integer> {
     private final static String TAG = "BackgroundLogin";
     private GlobalState _gs;
     private LoginActivity _la;
+    private Context _context;
 
-    public WSLogin(Context context, LoginActivity loginActivity){
+    public WSLogin(GlobalState globalState, LoginActivity loginActivity, Context context){
         _gs = (GlobalState) context;
         _la = loginActivity;
+        _context = context;
     }
 
     @Override
@@ -26,6 +28,8 @@ public class WSLogin extends AsyncTask<String, Void, Integer> {
             _gs.setUsername(strings[0]);
 
             Log.d(TAG, "sessionID: " + sessionID);
+
+            _gs.checkFilesToSubmit(_la, _context);
 
         } catch (Exception e){
             Log.d(TAG, e.toString());
