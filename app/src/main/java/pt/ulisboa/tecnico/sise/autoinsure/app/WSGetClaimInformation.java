@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+
 import pt.ulisboa.tecnico.sise.autoinsure.app.activities.LoginActivity;
 import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimRecord;
 import pt.ulisboa.tecnico.sise.autoinsure.datamodel.Customer;
@@ -62,7 +64,7 @@ public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord>
                 Log.d(TAG, "Got record of claim => " + integers[1]);
                 // write claims locally to use in case of absent connection
                 String encodedClaim = JsonCodec.encodeClaimRecord(claim);
-                JsonFileManager.jsonWriteToFile(this.globalState, InternalProtocol.KEY_CLAIM_RECORD_FILE + this.globalState.getUsername(), encodedClaim);
+                JsonFileManager.jsonWriteToFile(this.globalState, InternalProtocol.KEY_CLAIM_RECORD_FILE + this.globalState.getUsername() + "_" + integers[1], encodedClaim);
 
                 return claim;
             } catch (Exception e) {
@@ -79,7 +81,7 @@ public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord>
             // no server connection
             //try to get information locally
             try {
-                String encodedClaim = JsonFileManager.jsonReadFromFile(this.globalState, InternalProtocol.KEY_CLAIM_RECORD_FILE + this.globalState.getUsername());
+                String encodedClaim = JsonFileManager.jsonReadFromFile(this.globalState, InternalProtocol.KEY_CLAIM_RECORD_FILE + this.globalState.getUsername() + "_" + integers[1]);
                 ClaimRecord claim = JsonCodec.decodeClaimRecord(encodedClaim);
 
                 Log.d(TAG, "Showing customer information saved locally.");
@@ -87,6 +89,7 @@ public class WSGetClaimInformation extends AsyncTask<Integer, Void, ClaimRecord>
 
             } catch (Exception ex){
                 // there is no local information
+                Log.d(TAG, e.getMessage());
                 Log.d(TAG, "No customer information saved locally.");
             }
         }

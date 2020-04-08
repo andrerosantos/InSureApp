@@ -1,11 +1,13 @@
 package pt.ulisboa.tecnico.sise.autoinsure.app;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,6 +134,28 @@ public class JsonCodec {
         return claimList;
     }
 
+    public static List<ClaimRecord> decodeClaimRecordList(String jsonResult){
+        ArrayList<ClaimRecord> claimList = null;
+        Log.i(TAG, "decodeclaimRecordList: " + jsonResult);
+        try{
+            JSONArray jsonArray = new JSONArray(jsonResult);
+            claimList = new ArrayList<>();
+            for (int i = 0; i < jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                int claimIdResp = Integer.parseInt(jsonObject.getString("claimId"));
+                String claimTitle = jsonObject.getString("claimTitle");
+                String plate = jsonObject.optString("plate");
+                String submissionDate = jsonObject.optString("submissionDate");
+                String occurrenceDate = jsonObject.optString("occurrenceDate");
+                String description = jsonObject.optString("description");
+                String status = jsonObject.optString("status");
+            }
+        } catch (JSONException e) {
+            Log.d(TAG, "decodeClaimRecordList:" + jsonResult);
+        }
+        return claimList;
+    }
+
     public static String encodeClaimList(List<ClaimItem> claimItemList) throws Exception {
         if (claimItemList == null) return "";
         JSONArray jsonClaimList = new JSONArray();
@@ -144,5 +168,36 @@ public class JsonCodec {
         }
         Log.i(TAG, "encodeClaimList:" + jsonClaimList.toString());
         return jsonClaimList.toString();
+    }
+
+    public static String encodeClaimRecordList(List<ClaimRecord> claimRecordList) throws JSONException {
+        if (claimRecordList == null) return "";
+        JSONArray jsonClaimList = new JSONArray();
+        for (int i = 0; i < claimRecordList.size(); i++){
+            ClaimRecord claimRecord = claimRecordList.get(i);
+            JSONObject jsonClaim = new JSONObject();
+            jsonClaim.put("claimId", claimRecord.getId());
+            jsonClaim.put("claimTitle", claimRecord.getTitle());
+            jsonClaim.put("plate", claimRecord.getPlate());
+            jsonClaim.put("submissionDate", claimRecord.getSubmissionDate());
+            jsonClaim.put("occurrenceDate", claimRecord.getOccurrenceDate());
+            jsonClaim.put("description", 	claimRecord.getDescription());
+            jsonClaim.put("status", 		claimRecord.getStatus());
+        }
+        Log.i(TAG, "encodedClaimRecord: " + jsonClaimList.toString());
+        return jsonClaimList.toString();
+    }
+
+    public static String encodeClaimToSave(ClaimRecord newClaim, Context context, String filename) throws JSONException {
+        List<ClaimRecord> decodedClaims = null;
+        try {
+            String previousEncodedClaims = JsonFileManager.jsonReadFromFile(context, filename);
+            decodedClaims = decodeClaimRecordList(previousEncodedClaims);
+        } catch (Exception e){
+            Log.i(TAG, "No previous claims to submit");
+        }
+        decodedClaims.add(newClaim);
+        String encodedClaims = encodeClaimRecordList(decodedClaims);
+        return encodedClaims;
     }
 }

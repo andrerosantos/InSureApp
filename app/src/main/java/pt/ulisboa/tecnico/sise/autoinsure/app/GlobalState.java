@@ -5,12 +5,17 @@ import android.app.Application;
 import android.content.Intent;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pt.ulisboa.tecnico.sise.autoinsure.app.activities.LoginActivity;
+import pt.ulisboa.tecnico.sise.autoinsure.datamodel.ClaimRecord;
 
 public class GlobalState extends Application {
     private final String TAG = "GlobalState";
     private int _sessionID;
     private String _userName;
+    private ArrayList<ClaimRecord> claimsToSubmit = new ArrayList<>();
 
     public GlobalState() { }
 
@@ -49,5 +54,7 @@ public class GlobalState extends Application {
         startActivity(intent);
     }
 
-
+    public void addClaimToSubmit(ClaimRecord claim){
+        this.claimsToSubmit.add(claim);
+    }
 }

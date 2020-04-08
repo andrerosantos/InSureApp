@@ -11,5 +11,6 @@ public class InternalProtocol {
     public static final String KEY_CUSTOMER_INFORMATION_FILE = "CUSTOMER_INFORMATION_";
     public static final String KEY_CLAIM_RECORD_FILE = "CLAIM_RECORD_";
     public static final String KEY_USER_PLATES_FILE = "PLATES_";
+    public static final String KEY_CLAIM_FOR_FUTURE_SUBMISSION_FILE = "CLAIMS_FOR_FUTURE_SUBISSION_";
 
 }
