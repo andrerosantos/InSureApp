@@ -79,7 +79,7 @@ public class WSNewClaimPlates extends AsyncTask<Integer, Void, List<String>> {
 
             try {
                 //try to get information locally
-                encodedPlates = JsonFileManager.jsonReadFromFile(_globalState, InternalProtocol.KEY_USER_PLATES_FILE + _globalState.getSessionId());
+                encodedPlates = JsonFileManager.jsonReadFromFile(_globalState, InternalProtocol.KEY_USER_PLATES_FILE + _globalState.getUsername());
                 List<String> plates = JsonCodec.decodePlateList(encodedPlates);
 
                 Log.d(TAG, "Showing customer information saved locally.");

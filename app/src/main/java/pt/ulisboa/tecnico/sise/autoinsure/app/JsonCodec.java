@@ -137,7 +137,7 @@ public class JsonCodec {
 
     public static List<ClaimRecord> decodeClaimRecordList(String jsonResult){
         ArrayList<ClaimRecord> claimList = null;
-        Log.i(TAG, "decodeclaimRecordList: " + jsonResult);
+        Log.i(TAG, "decodeClaimRecordList: " + jsonResult);
         try{
             JSONArray jsonArray = new JSONArray(jsonResult);
             claimList = new ArrayList<>();
