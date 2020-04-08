@@ -27,7 +27,7 @@ public class WSNewClaim extends AsyncTask<String, Void, Boolean> {
         //test connection and session ID
         try{
             Customer customer = WSHelper.getCustomerInfo(this.globalState.getSessionId());
-            if(!customer.getAddress().equals(this.globalState.getUsername())){
+            if(!customer.getUsername().equals(this.globalState.getUsername())){
                 this.wrongSessionId = true;
                 return false;
             }
